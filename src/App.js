@@ -27,7 +27,9 @@ const code = `for i in range(2):
   print("Yeah")
 `;
 
-const url = `http://192.168.0.161:8080/v1/users/MhKnAfXT/3IVIR/execute`;
+const url = `http://localhost:8080/v1/users/MhKnAfXT/3IVIR/execute`;
+
+// const url = `http://192.168.0.161:8080/v1/users/MhKnAfXT/3IVIR/execute`;
 
 // const url = `http://192.168.43.18:8080/v1/users/MhKnAfXT/3IVIR/execute`;
 
