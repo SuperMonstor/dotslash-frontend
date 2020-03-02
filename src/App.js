@@ -27,7 +27,7 @@ const code = `for i in range(2):
   print("Yeah")
 `;
 
-const url = `http://localhost:8080/v1/users/MhKnAfXT/3IVIR/execute`;
+const url = `http://192.168.43.18:8000/v1/submissions`;
 
 // const url = `http://192.168.0.161:8080/v1/users/MhKnAfXT/3IVIR/execute`;
 
@@ -38,13 +38,15 @@ const url = `http://localhost:8080/v1/users/MhKnAfXT/3IVIR/execute`;
   
     handleSubmitCode = async () => {
       try {
-        const response = await axios.post(url, this.state);
-        this.setState({ response: response.data });
+        const response = await axios.post(url, { code: this.state.code, compiler: this.state.compiler, stats: [{}]}, { headers: { Authorization: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTYWlmIiwiaWF0IjoxNTgzMTE2MDkwLCJleHAiOjE1ODM3MjA4OTB9.YP_CRff_ZxY9-So1VEcouwt9kLrkhc46qzvxPxf4oVYaBFiEwzTbKrgOzvMcm9xhPKpL5mDO0MxtvFMUqHeMCA`,
+      'Api-Key': 'EnfkjSCHEX'}});
+        this.setState({ response: response.data.stats[0].output });
         console.log(response);
       } catch(error) {
         console.log(error);
       }
     }
+
 render(){
     return (
   <Layout>
@@ -90,7 +92,7 @@ render(){
         </div>
               </Col>
               <Col span={24}>
-                <div style={{backgroudColor: '#fff', height: '50vh'}}>
+                <div style={{backgroundColor: 'rgba(255,255,255,0.8)', height: 200, width: '100%', marginTop: 20, padding: 16 }}>
                 <pre>
                   {this.state.response && this.state.response}
                 </pre>
